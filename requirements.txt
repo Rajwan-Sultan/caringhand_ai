@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic
+chromadb
+sentence-transformers
+transformers
+torch
+huggingface-hub
+numpy
+python-dotenv
