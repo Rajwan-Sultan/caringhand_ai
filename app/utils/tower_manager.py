@@ -1,4 +1,4 @@
-
+from .vectordb_adapter import ChromaDBAdapter
 class TowerManager:
     """Manages the towers with caching"""
     

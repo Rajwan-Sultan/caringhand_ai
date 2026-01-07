@@ -7,6 +7,7 @@ from ..schema.schema import (UserCreate, UserUpdate,
                              ArtistCreate, ArtistUpdate,
                              ProductCreate, ProductUpdate,
                              SearchRequest, SearchResponse)
+from ..utils.embedding_model import embedding_model
 from ..core.config import settings
 
 router = APIRouter()

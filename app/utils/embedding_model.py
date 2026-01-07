@@ -1,15 +1,17 @@
-from ..core.config import Config
-
+from ..core.config import Settings
+from typing import List
+import numpy as np
+from sentence_transformers import SentenceTransformer
 class EmbeddingModel:
     _instance = None
     _model = None
-    _config = Config()
+    _config = Settings()
     _EMBEDDING_MODEL_NAME = _config.EMBEDDING_MODEL_NAME
     
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
-            cls._model = SentenceTransformer(EMBEDDING_MODEL_NAME)
+            cls._model = SentenceTransformer(cls._EMBEDDING_MODEL_NAME)
             # Optimize for speed
             cls._model.max_seq_length = 128  # Limit sequence length for speed
         return cls._instance

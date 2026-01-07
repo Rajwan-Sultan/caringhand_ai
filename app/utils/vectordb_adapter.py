@@ -113,3 +113,4 @@ class ChromaDBAdapter(VectorDBInterface):
                 'metadata': result['metadatas'][0]
             }
         return None
+
