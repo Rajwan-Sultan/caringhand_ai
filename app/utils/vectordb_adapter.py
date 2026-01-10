@@ -1,3 +1,12 @@
+from typing import List, Dict, Optional
+import os
+import asyncio
+from concurrent.futures import ThreadPoolExecutor
+import chromadb
+from chromadb.config import Settings
+
+# Create a thread pool executor for running sync ChromaDB operations
+executor = ThreadPoolExecutor(max_workers=4)
 
 class VectorDBInterface:
     """

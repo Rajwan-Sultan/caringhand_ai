@@ -30,14 +30,14 @@ class ProductCreate(BaseModel):
     product_id: str
     name: str
     description: str
-    artist_id: str
+    # artist_id: str
     category: str
     metadata: Optional[Dict[str, Any]] = {}
 
 class ProductUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
-    artist_id: Optional[str] = None
+    # artist_id: Optional[str] = None
     category: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
 

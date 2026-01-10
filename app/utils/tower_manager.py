@@ -1,4 +1,6 @@
 from .vectordb_adapter import ChromaDBAdapter
+from typing import List, Dict, Optional
+import numpy as np
 class TowerManager:
     """Manages the towers with caching"""
     
