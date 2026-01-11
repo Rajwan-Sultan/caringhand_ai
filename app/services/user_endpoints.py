@@ -1,4 +1,3 @@
-
 # ============================================================================
 # USER ENDPOINTS
 # ============================================================================
@@ -17,7 +16,6 @@ from ..utils.embedding_model import embedding_model
 from ..core.config import settings
 from ..utils.tower_manager import tower_manager
 
-from concurrent.futures import ThreadPoolExecutor
 # Create a thread pool executor for running sync operations
 executor = ThreadPoolExecutor(max_workers=4)
 

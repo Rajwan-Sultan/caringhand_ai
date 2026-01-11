@@ -1,4 +1,3 @@
-
 # ============================================================================
 # SEARCH ENDPOINTS (MAIN RECOMMENDATION LOGIC)
 # ============================================================================
@@ -17,7 +16,6 @@ from ..utils.embedding_model import embedding_model
 from ..core.config import settings
 from ..utils.tower_manager import tower_manager
 
-from concurrent.futures import ThreadPoolExecutor
 # Create a thread pool executor for running sync operations
 executor = ThreadPoolExecutor(max_workers=4)
 
@@ -77,6 +75,9 @@ async def search_products(search_req: SearchRequest):
         top_k=search_req.top_k
     )
     
+    # Add similarity score to each result using list comprehension
+    results = [{**r, "similarity_according_to_search_and_account": round(max(0, min(100, (1 - r["distance"]) * 100)), 2)} for r in results]
+    
     elapsed = (time.time() - start) * 1000
     
     return SearchResponse(
@@ -109,8 +110,9 @@ async def search_artists(search_req: SearchRequest):
         top_k=search_req.top_k
     )
     
+    results = [{**r, "similarity_according_to_search_and_account": round(max(0, min(100, (1 - r["distance"]) * 100)), 2)} for r in results]
     elapsed = (time.time() - start) * 1000
-    
+
     return SearchResponse(
         results=results,
         search_time_ms=elapsed
@@ -154,6 +156,7 @@ async def search_combined(search_req: SearchRequest):
     # Combine and sort by distance
     combined = products + artists
     combined.sort(key=lambda x: x['distance'])
+    
     
     elapsed = (time.time() - start) * 1000
     
