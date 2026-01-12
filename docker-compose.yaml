@@ -16,7 +16,7 @@ services:
       - "8000:8000"
     volumes:
       # Bind mount to local VPS directory for ChromaDB persistence
-      - /home/sultan/Desktop:/app/chromadb_data
+      - /home/sultan/Desktop/cian/chromadb_data:/app/chromadb_data
     environment:
       # Optional: Add any environment variables
       - PYTHONUNBUFFERED=1
