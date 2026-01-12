@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  recommender-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Add build args for faster builds
+      args:
+        - BUILDKIT_INLINE_CACHE=1
+    container_name: caringhand-recommender
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      # Named volume for ChromaDB persistence
+      - chromadb_data:/app/chromadb_data
+    environment:
+      # Optional: Add any environment variables
+      - PYTHONUNBUFFERED=1
+    # Resource limits (adjust based on your VPS)
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G
+        reservations:
+          cpus: '1'
+          memory: 2G
+
+volumes:
+  chromadb_data:
+    driver: local

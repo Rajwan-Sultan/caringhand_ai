@@ -1,10 +1,28 @@
-fastapi
-uvicorn[standard]
-pydantic
-chromadb
-sentence-transformers
-transformers
-torch
-huggingface-hub
-numpy
-python-dotenv
+# fastapi
+# uvicorn[standard]
+# pydantic
+# chromadb
+# sentence-transformers
+# transformers
+# torch
+# huggingface-hub
+# numpy
+# python-dotenv
+
+
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.6
+
+chromadb==0.6.3
+
+sentence-transformers==3.3.1
+transformers==4.47.1
+huggingface-hub==0.27.0
+
+# Core Dependencies
+numpy==1.26.4
+python-dotenv==1.0.1
+
+# PyTorch CPU-only (installed separately in Dockerfile)
+# torch - installed via pip with --index-url flag for CPU version

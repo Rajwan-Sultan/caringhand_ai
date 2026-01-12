@@ -65,10 +65,10 @@ async def search_products(search_req: SearchRequest):
     Search products using hybrid query + user preference
     Algorithm: search_embedding = query*query_weight + user*(1-query_weight)
     """
-    start = time.time()
+    # start = time.time()
     
     # Step 1: Generate query embedding (fast)
-    query_task = generate_embedding_async(search_req.query)
+    query_task = await generate_embedding_async(search_req.query)
     
     # Step 2: Get cached user embedding (very fast)
     user_emb = await tower_manager.get_user_embedding(search_req.user_id)
@@ -76,7 +76,7 @@ async def search_products(search_req: SearchRequest):
         raise HTTPException(status_code=404, detail="User not found")
     
     # Wait for query embedding
-    query_emb = await query_task
+    query_emb = query_task
     
     # Step 3: Combine embeddings
     search_emb = combine_embeddings(query_emb, user_emb, search_req.query_weight)
