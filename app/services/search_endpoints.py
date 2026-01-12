@@ -87,9 +87,9 @@ async def search_products(search_req: SearchRequest):
         for r in await 
         tower_manager.product_tower.search( query_embedding=search_emb.tolist(), top_k=search_req.top_k )] 
     )
-    elapsed = (time.time() - start) * 1000
+    # elapsed = (time.time() - start) * 1000
     
     return SearchResponse(
         results=results,
-        search_time_ms=elapsed
+        # search_time_ms=elapsed
     )

@@ -53,19 +53,19 @@ async def create_user(user: UserCreate):
         metadatas=[metadata]
     )
     
-    elapsed = (time.time() - start) * 1000
+    # elapsed = (time.time() - start) * 1000
     
     return {
         "user_id": user.user_id,
         "status": "created",
         "embedding_dim": len(embedding),
-        "time_ms": elapsed
+        # "time_ms": elapsed
     }
 
 @router.put("/users/{user_id}", tags=["Users"])
 async def update_user(user_id: str, user_update: UserUpdate):
     """Update user information and regenerate embedding"""
-    start = time.time()
+    # start = time.time()
     
     # Get existing user
     existing = await tower_manager.user_tower.get_by_id(user_id)
@@ -95,12 +95,12 @@ async def update_user(user_id: str, user_update: UserUpdate):
     # Invalidate cache
     tower_manager.invalidate_user_cache(user_id)
     
-    elapsed = (time.time() - start) * 1000
+    # elapsed = (time.time() - start) * 1000
     
     return {
         "user_id": user_id,
         "status": "updated",
-        "time_ms": elapsed
+        # "time_ms": elapsed
     }
 
 @router.get("/users/{user_id}", tags=["Users"])

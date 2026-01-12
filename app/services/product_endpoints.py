@@ -58,13 +58,13 @@ async def create_product(product: ProductCreate):
         metadatas=[metadata]
     )
     
-    elapsed = (time.time() - start) * 1000
+    # elapsed = (time.time() - start) * 1000
     
     return {
         "product_id": product.product_id,
         "status": "created",
         "embedding_dim": len(embedding),
-        "time_ms": elapsed
+        # "time_ms": elapsed
     }
 
 @router.put("/products/{product_id}", tags=["Products"])

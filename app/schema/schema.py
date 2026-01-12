@@ -35,4 +35,4 @@ class SearchRequest(BaseModel):
 
 class SearchResponse(BaseModel):
     results: List[Dict[str, Any]]
-    search_time_ms: float
+    # search_time_ms: float
