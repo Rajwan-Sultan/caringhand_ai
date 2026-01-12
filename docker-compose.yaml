@@ -15,11 +15,12 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      # Named volume for ChromaDB persistence
-      - chromadb_data:/app/chromadb_data
+      # Bind mount to local VPS directory for ChromaDB persistence
+      - /home/sultan/Desktop:/app/chromadb_data
     environment:
       # Optional: Add any environment variables
       - PYTHONUNBUFFERED=1
+      - CHROMA_PERSIST_DIRECTORY=/app/chromadb_data
     # Resource limits (adjust based on your VPS)
     deploy:
       resources:
@@ -29,7 +30,3 @@ services:
         reservations:
           cpus: '1'
           memory: 2G
-
-volumes:
-  chromadb_data:
-    driver: local

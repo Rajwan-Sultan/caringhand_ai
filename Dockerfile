@@ -19,6 +19,9 @@ RUN pip install --no-cache-dir --user \
 # Install remaining dependencies
 RUN pip install --no-cache-dir --user -r requirements.txt
 
+# Pre-download the embedding model to cache it
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
+
 # Stage 2: Runtime
 FROM python:3.11-slim
 WORKDIR /app
@@ -31,12 +34,16 @@ RUN apt-get update && apt-get install -y \
 # Copy Python dependencies from builder
 COPY --from=builder /root/.local /root/.local
 
+# Copy the cached model from builder
+COPY --from=builder /root/.cache /root/.cache
+
 # Copy application code
 COPY . .
 
 # Set environment variables
 ENV PATH=/root/.local/bin:$PATH
 ENV PYTHONUNBUFFERED=1
+ENV CHROMA_PERSIST_DIRECTORY=/app/chromadb_data
 
 # Expose the application port
 EXPOSE 8000

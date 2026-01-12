@@ -40,8 +40,8 @@ class VectorDBInterface:
 class ChromaDBAdapter(VectorDBInterface):
     
     def __init__(self, collection_name: str):
-        # Use persistent storage
-        persist_directory = os.environ.get("CHROMA_PERSIST_DIR", "./chroma_data")
+        # Use persistent storage - updated to match Docker env var
+        persist_directory = os.environ.get("CHROMA_PERSIST_DIRECTORY", "/app/chromadb_data")
         self.client = chromadb.PersistentClient(
             path=persist_directory,
             settings=Settings(
