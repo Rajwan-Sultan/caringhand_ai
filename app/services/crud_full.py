@@ -5,7 +5,6 @@
 # from pydantic import BaseModel
 
 # from ..schema.schema import (UserCreate, UserUpdate,
-#                              ArtistCreate, ArtistUpdate,
 #                              ProductCreate, ProductUpdate,
 #                              SearchRequest, SearchResponse)
 # from ..utils.embedding_model import embedding_model

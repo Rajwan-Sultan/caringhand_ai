@@ -7,9 +7,7 @@ class TowerManager:
     def __init__(self):
         # Initialize n separate towers (collections)
         self.user_tower = ChromaDBAdapter("user_tower")
-        self.artist_tower = ChromaDBAdapter("artist_tower")
         self.product_tower = ChromaDBAdapter("product_tower")
-        # self.song_tower = ChromaDBAdapter("song_tower")
         
         # Cache for user embeddings (most frequently accessed)
         self._user_embedding_cache: Dict[str, np.ndarray] = {}

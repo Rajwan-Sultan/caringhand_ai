@@ -6,7 +6,6 @@ from pydantic import BaseModel
 from concurrent.futures import ThreadPoolExecutor
 
 from ..schema.schema import (UserCreate, UserUpdate,
-                             ArtistCreate, ArtistUpdate,
                              ProductCreate, ProductUpdate,
                              SearchRequest, SearchResponse)
 from ..utils.embedding_model import embedding_model
@@ -48,7 +47,6 @@ async def create_product(product: ProductCreate):
     metadata = {
         "name": product.name,
         "description": product.description,
-        # "artist_id": product.artist_id,
         "category": product.category,
         **product.metadata
         
@@ -85,8 +83,6 @@ async def update_product(product_id: str, product_update: ProductUpdate):
         metadata['name'] = product_update.name
     if product_update.description:
         metadata['description'] = product_update.description
-    if product_update.artist_id:
-        metadata['artist_id'] = product_update.artist_id
     if product_update.category:
         metadata['category'] = product_update.category
     if product_update.metadata:

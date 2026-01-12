@@ -13,31 +13,17 @@ class UserUpdate(BaseModel):
     preferences: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
 
-class ArtistCreate(BaseModel):
-    artist_id: str
-    name: str
-    bio: str
-    genre: str
-    metadata: Optional[Dict[str, Any]] = {}
-
-class ArtistUpdate(BaseModel):
-    name: Optional[str] = None
-    bio: Optional[str] = None
-    genre: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
 
 class ProductCreate(BaseModel):
     product_id: str
     name: str
     description: str
-    # artist_id: str
     category: str
     metadata: Optional[Dict[str, Any]] = {}
 
 class ProductUpdate(BaseModel):
     name: Optional[str] = None
     description: Optional[str] = None
-    # artist_id: Optional[str] = None
     category: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
 
