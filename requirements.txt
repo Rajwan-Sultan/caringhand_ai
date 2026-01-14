@@ -26,3 +26,8 @@ python-dotenv==1.0.1
 
 # PyTorch CPU-only (installed separately in Dockerfile)
 # torch - installed via pip with --index-url flag for CPU version
+
+python-docx 
+PyMuPDF
+google-genai
+python-multipart
