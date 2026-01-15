@@ -4,5 +4,6 @@ env
 .env
 __pycache__/
 chroma_data/
+chroma_db/
 *.pyc
 *.pyo

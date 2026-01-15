@@ -13,7 +13,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8000:8000"
+      - "8062:8062"
     volumes:
       # Bind mount to local VPS directory for ChromaDB persistence
       - /home/sultan/Desktop/cian/chromadb_data:/app/chromadb_data
