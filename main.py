@@ -10,7 +10,7 @@ from app.services.top_recommended_jobs import router as top_jobs_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
-    title="Caringhand AII",
+    title="Caringhand AI",
     description="Upload and parse resume documents with LLM and regex fallback & it also do recommendation",
     version="1.0.0"
 )
@@ -36,6 +36,6 @@ async def root():
     return {"message": "Welcome to the Recommender application!"}
 
 
-# if __name__ == "__main__":
-#     import uvicorn
-#     uvicorn.run("main:app", host="0.0.0.0", port=8062,reload=True)
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8062,reload=True)

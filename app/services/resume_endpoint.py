@@ -48,7 +48,6 @@ async def parse_resume(file: UploadFile = File(...)):
         if not file_content:
             raise HTTPException(status_code=400, detail="Empty file")
         
-        # Get proper MIME type
         mime_type = get_mime_type(file)
         
         # Try LLM first with native file processing
