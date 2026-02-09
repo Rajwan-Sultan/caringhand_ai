@@ -13,7 +13,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8062:8062"
+      - "8000:8000"
     volumes:
       # Bind mount to local VPS directory for ChromaDB persistence
       - /home/sultan/Desktop/cian/chromadb_data:/app/chromadb_data
@@ -21,12 +21,3 @@ services:
       # Optional: Add any environment variables
       - PYTHONUNBUFFERED=1
       - CHROMA_PERSIST_DIRECTORY=/app/chromadb_data
-    # Resource limits (adjust based on your VPS)
-    deploy:
-      resources:
-        limits:
-          cpus: '2'
-          memory: 4G
-        reservations:
-          cpus: '1'
-          memory: 2G

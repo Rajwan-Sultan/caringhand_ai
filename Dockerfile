@@ -48,7 +48,7 @@ ENV PYTHONUNBUFFERED=1
 ENV CHROMA_PERSIST_DIR=/app/chromadb_data
 
 # Expose the application port
-EXPOSE 8062
+EXPOSE 8000
 
 # Run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8062"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

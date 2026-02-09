@@ -8,4 +8,7 @@ class Settings:
     QUERY_WEIGHT = float(os.getenv("QUERY_WEIGHT", 0.8))
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
+    class Config:
+        env_file = ".env"
+
 settings = Settings()
